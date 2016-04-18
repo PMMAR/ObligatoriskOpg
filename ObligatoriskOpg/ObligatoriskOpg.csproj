@@ -98,10 +98,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Facade\GuestFacade.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\GuestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,7 +132,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Facade\" />
+    <Folder Include="Handler\" />
     <Folder Include="ViewModel\" />
     <Folder Include="View\" />
   </ItemGroup>
