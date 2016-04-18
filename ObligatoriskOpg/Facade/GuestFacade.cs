@@ -16,6 +16,7 @@ namespace ObligatoriskOpg.Facade
         //HttpClientHandler handler = new HttpClientHandler();
         //handler.UseDefaultCredentials = true;
         public string ErrorMessage { get; set; }
+        public string responseMessage { get; set; }
 
         //Http GET
         public async Task<List<GuestClass>> GetGuestList()
@@ -69,6 +70,45 @@ namespace ObligatoriskOpg.Facade
                     ErrorMessage = e.Message;
                     return null;
                 }
+            }
+        }
+
+        //Http POST
+
+
+
+        public async Task<GuestClass> PostGuest(int Guest_No, string Address, string Name)
+        {
+            var MyNewGuest = new GuestClass(Name, Guest_No, Address)
+            {
+                Guest_No = Guest_No,
+                Name = Name,
+                Address = Address
+            };
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                try
+                {
+                    var response = await client.PostAsJsonAsync<GuestClass>("API/guest", MyNewGuest);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        //return MyNewGuest;
+                        ErrorMessage = response.StatusCode.ToString();
+                        return MyNewGuest;
+                    }
+                  
+                   ErrorMessage  = response.StatusCode.ToString();
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    ErrorMessage = e.Message;
+                    return null;
+                }
+
             }
         }
 
