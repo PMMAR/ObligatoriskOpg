@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -99,8 +100,8 @@ namespace ObligatoriskOpg.Facade
                         ErrorMessage = response.StatusCode.ToString();
                         return MyNewGuest;
                     }
-                  
-                   ErrorMessage  = response.StatusCode.ToString();
+
+                    ErrorMessage = response.StatusCode.ToString();
                     return null;
                 }
                 catch (Exception e)
@@ -112,5 +113,72 @@ namespace ObligatoriskOpg.Facade
             }
         }
 
+        //        //HTTP PUT
+        //        var MyUpdatedHotel = new Hotel()
+        //        {
+        //            Address = "PlzWorkstreet ",
+        //            Hotel_No = 1019,
+        //            Name = "Plz"
+        //        };
+
+        //        MyUpdatedHotel.Name = "EASJ Hotel";
+
+        //            using (var client = new HttpClient())
+        //            {
+        //                client.BaseAddress = new Uri(serverUrl);
+        //        client.DefaultRequestHeaders.Clear();
+        //                try
+        //                {
+        //                    var response = client.PutAsJsonAsync<Hotel>("API/Hotels/1019", MyUpdatedHotel).Result;
+        //                    if (response.IsSuccessStatusCode)
+        //                    {
+        //                        Console.WriteLine("Du har opdateret et hotel");
+        //                        Console.WriteLine("Statuskode : " + response.StatusCode);
+        //                    }
+        //                    else
+        //                    {
+        //                        Console.WriteLine("Fejl, hotellet blev ikke opdateret");
+        //                        Console.WriteLine("Statuskode : " + response.StatusCode);
+        //                    }
+        //                }
+        //                catch (Exception e)
+        //                {
+        //                    Console.WriteLine("Der er sket en fejl : " + e.Message);
+        //                }
+        //            }
+
+        //            Console.ReadKey();
+
+        // Http Delete
+
+        public async Task<GuestClass> GuestDelete(int Guest_No)
+        {
+            int guestNo = Guest_No;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+
+                string urlString = "api/hotels/" + guestNo;
+
+                try
+                {
+                    HttpResponseMessage response = await client.DeleteAsync(urlString);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ErrorMessage = response.StatusCode.ToString();
+                    }
+                    ErrorMessage = response.StatusCode.ToString();
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    ErrorMessage = e.Message;
+                    return null;
+                }
+            }
+
+        }
     }
 }
