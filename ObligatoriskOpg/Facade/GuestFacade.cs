@@ -78,14 +78,9 @@ namespace ObligatoriskOpg.Facade
 
 
 
-        public async Task<GuestClass> PostGuest(int Guest_No, string Address, string Name)
+        public async Task<GuestClass> PostGuest(GuestClass NewGuest)
         {
-            var MyNewGuest = new GuestClass(Name, Guest_No, Address)
-            {
-                Guest_No = Guest_No,
-                Name = Name,
-                Address = Address
-            };
+            
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(serverUrl);
@@ -93,12 +88,12 @@ namespace ObligatoriskOpg.Facade
 
                 try
                 {
-                    var response = await client.PostAsJsonAsync<GuestClass>("API/guest", MyNewGuest);
+                    var response = await client.PostAsJsonAsync<GuestClass>("API/guest", NewGuest);
                     if (response.IsSuccessStatusCode)
                     {
                         //return MyNewGuest;
                         ErrorMessage = response.StatusCode.ToString();
-                        return MyNewGuest;
+                        return NewGuest;
                     }
 
                     ErrorMessage = response.StatusCode.ToString();
@@ -114,26 +109,21 @@ namespace ObligatoriskOpg.Facade
         }
 
             //HTTP PUT
-        public async Task<GuestClass> GuestPut(string Name, int Guest_No, string Address)
+        public async Task<GuestClass> GuestPut(GuestClass UdGuest)
         {
-            var MyUpdatedGuest = new GuestClass(Name, Guest_No, Address)
-            {
-                Address = Address,
-                Guest_No = Guest_No,
-                Name = Name
-            };
+        
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
                 try
                 {
-                    var response = await client.PutAsJsonAsync<GuestClass>("API/Guest/Guest_No", MyUpdatedGuest);
+                    var response = await client.PutAsJsonAsync<GuestClass>("API/Guest/Guest_No", UdGuest);
                     if (response.IsSuccessStatusCode)
                     {
 
                         ErrorMessage = response.StatusCode.ToString();
-                        return MyUpdatedGuest;
+                        return UdGuest;
                     }
                     ErrorMessage = response.StatusCode.ToString();
                     return null;
@@ -150,16 +140,16 @@ namespace ObligatoriskOpg.Facade
 
         // Http Delete
 
-        public async Task<GuestClass> GuestDelete(int Guest_No)
+        public async Task<GuestClass> GuestDelete(GuestClass DelGuest)
         {
-            int guestNo = Guest_No;
+         
 
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
 
-                string urlString = "api/hotels/" + guestNo;
+                string urlString = "api/hotels/" + DelGuest;
 
                 try
                 {
@@ -167,6 +157,7 @@ namespace ObligatoriskOpg.Facade
                     if (response.IsSuccessStatusCode)
                     {
                         ErrorMessage = response.StatusCode.ToString();
+                        return null;
                     }
                     ErrorMessage = response.StatusCode.ToString();
                     return null;

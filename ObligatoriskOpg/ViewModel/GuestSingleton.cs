@@ -28,5 +28,7 @@ namespace ObligatoriskOpg.ViewModel
                 return instance;
             }
         }
+
+        
     }
 }
