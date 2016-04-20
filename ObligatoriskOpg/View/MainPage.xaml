@@ -5,8 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:ObligatoriskOpg.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="ObligatoriskOpg.MainPage"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Width="445.333">
 
     <Page.DataContext>
         <ViewModel:GuestViewModel/>
@@ -17,6 +18,13 @@
             <RowDefinition Height="43*"/>
             <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Margin="222,10,0,10" Width="177" ItemsSource="{Binding gs.Guests}" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="5" Background="#FFC3C3C3"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Margin="10,10,0,10" Width="177" d:LayoutOverrides="TopPosition, BottomPosition" ItemsSource="{Binding gs.Guests}" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="5" Background="#FFC3C3C3"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Right" Margin="0,0,95,28" Grid.Row="1" VerticalAlignment="Bottom">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:CallMethodAction MethodName="{Binding AddGuestCommand}"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </Button>
     </Grid>
 </Page>
