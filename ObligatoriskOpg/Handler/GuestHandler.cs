@@ -22,28 +22,35 @@ namespace ObligatoriskOpg.Handler
             GuestViewModels = guestViewModels;
         }
 
-        public void GetGuest()
+        public async void GetGuestList()
         {
             var facade = new GuestFacade();
-            facade.GetGuest(Guest);
+            await facade.GetGuestList();
+
         }
 
-        public void PostGuest()
+        public async void GetGuest()
         {
             var facade = new GuestFacade();
-            facade.PostGuest(Guest);
+            await facade.GetGuest(Guest);
         }
 
-        public void UpdateGuest()
+        public async void PostGuest()
         {
             var facade = new GuestFacade();
-            facade.GuestPut(Guest);
+            await facade.PostGuest(Guest);
         }
 
-        public void DeleteGuest()
+        public async void UpdateGuest()
         {
             var facade = new GuestFacade();
-            facade.GuestDelete(Guest);
+            await facade.GuestPut(Guest);
+        }
+
+        public async void DeleteGuest()
+        {
+            var facade = new GuestFacade();
+            await facade.GuestDelete(Guest);
         }
 
 

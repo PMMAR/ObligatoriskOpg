@@ -9,6 +9,7 @@ using System.Windows.Input;
 using ObligatoriskOpg.Annotations;
 using ObligatoriskOpg.Common;
 using ObligatoriskOpg.Handler;
+using ObligatoriskOpg.Model;
 
 namespace ObligatoriskOpg.ViewModel
 {
@@ -17,6 +18,8 @@ namespace ObligatoriskOpg.ViewModel
         private int _guestId;
         private string _navn;
         private string _address;
+        public Handler.GuestHandler GuestHandler { get; set; }
+
         public ICommand AddGuestCommand { get; set; }
         public ICommand GetGuestCommand { get; set; }
         public ICommand UpdateGuestCommand { get; set; }
@@ -44,12 +47,12 @@ namespace ObligatoriskOpg.ViewModel
 
         public GuestViewModel()
         {
+            GuestHandler = new Handler.GuestHandler(this);
             gs = GuestSingleton.Instance;
-            //GetGuest = new RelayCommand();
-            //AddGuestCommand = new RelayCommand();
-            //GetGuestCommand = new RelayCommand();
-            //UpdateGuestCommand = new RelayCommand();
-            //DeleteGuestCommand = new RelayCommand();
+            AddGuestCommand = new RelayCommand(GuestHandler.PostGuest);
+            GetGuestCommand = new RelayCommand(GuestHandler.GetGuest);
+            UpdateGuestCommand = new RelayCommand(GuestHandler.UpdateGuest);
+            DeleteGuestCommand = new RelayCommand(GuestHandler.DeleteGuest);
         }
 
 
