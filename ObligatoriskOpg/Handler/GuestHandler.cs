@@ -15,10 +15,10 @@ namespace ObligatoriskOpg.Handler
         public static GuestSingleton GuestSingletons { get; set; }
         public static GuestFacade GuestFacades { get; set; }
 
-        public string Name { get; set; }
-        public int Guest_No { get; set; }
-        public string Address { get; set; }
-
+        //public string Name { get; set; }
+        //public int Guest_No { get; set; }
+        //public string Address { get; set; }
+        public GuestClass guest  { get; set; }
 
         public GuestHandler(GuestViewModel guestViewModels)
         {
@@ -28,20 +28,25 @@ namespace ObligatoriskOpg.Handler
         public void GetGuest()
         {
             var facade = new GuestFacade();
-            facade.GetGuest();
+            facade.GetGuest(guest.Guest_No);
         }
 
         public void PostGuest()
         {
             var facade = new GuestFacade();
-            facade.PostGuest(new GuestClass(Name, Guest_No, Address));
+            facade.PostGuest(guest);
         }
 
         public void UpdateGuest()
         {
             var facade = new GuestFacade();
-            facade.GuestPut(new GuestClass(Name, Guest_No, Address));
+            facade.GuestPut(guest);
+        }
 
+        public void DeleteGuest()
+        {
+            var facade = new GuestFacade();
+            facade.GuestDelete(guest);
         }
 
 

@@ -47,14 +47,14 @@ namespace ObligatoriskOpg.Facade
             }
         }
 
-        public async Task<GuestClass> GetGuest()
+        public async Task<GuestClass> GetGuest(GuestClass getGuest)
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
-                string urlString = "api/guests";
+                string urlString = "api/guests/" + getGuest.Guest_No;
 
                 try
                 {
@@ -142,14 +142,12 @@ namespace ObligatoriskOpg.Facade
 
         public async Task<GuestClass> GuestDelete(GuestClass DelGuest)
         {
-         
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
 
-                string urlString = "api/hotels/" + DelGuest;
+                string urlString = "api/hotels/" + DelGuest.Guest_No;
 
                 try
                 {
