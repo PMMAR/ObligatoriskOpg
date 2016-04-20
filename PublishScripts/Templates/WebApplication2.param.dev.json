@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "Obligatorisk"
+  },
+  "hostingPlanName": {
+    "value": "AppService"
+  },
+  "siteLocation": {
+    "value": "North Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "36d4da9c-a748-441e-9e30-d3226cb17437"
+  },
+  "resourceGroup": {
+    "value": "Default-ApplicationInsights-CentralUS"
+  }
+}
