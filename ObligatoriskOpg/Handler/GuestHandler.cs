@@ -24,16 +24,26 @@ namespace ObligatoriskOpg.Handler
         {
             GuestViewModels = guestViewModels;
         }
-        
-        //public void GetGuest()
-        //{
-        //    GuestFacade.GetGuest();
-        //}
+
+        public void GetGuest()
+        {
+            var facade = new GuestFacade();
+            facade.GetGuest();
+        }
 
         public void PostGuest()
         {
             var facade = new GuestFacade();
             facade.PostGuest(new GuestClass(Name, Guest_No, Address));
         }
+
+        public void UpdateGuest()
+        {
+            var facade = new GuestFacade();
+            facade.GuestPut(new GuestClass(Name, Guest_No, Address));
+
+        }
+
+
     }
 }

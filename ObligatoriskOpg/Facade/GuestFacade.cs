@@ -118,7 +118,7 @@ namespace ObligatoriskOpg.Facade
                 client.DefaultRequestHeaders.Clear();
                 try
                 {
-                    var response = await client.PutAsJsonAsync<GuestClass>("API/Guest/Guest_No", UdGuest);
+                    var response = await client.PutAsJsonAsync<GuestClass>("API/Guest/" + UdGuest.Guest_No, UdGuest);
                     if (response.IsSuccessStatusCode)
                     {
 
