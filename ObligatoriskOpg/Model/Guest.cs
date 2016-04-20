@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ObligatoriskOpg.Model
 {
-    public class GuestClass
+    public class Guest
     {
         public string Name { get; set; }
         public int Guest_No { get; set; }   
         public string Address { get; set; }
 
-        public GuestClass(string name, int guestNo, string address)
+        public Guest(string name, int guestNo, string address)
         {
             Name = name;
             Guest_No = guestNo;
