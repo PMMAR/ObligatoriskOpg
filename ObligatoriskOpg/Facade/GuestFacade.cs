@@ -78,7 +78,7 @@ namespace ObligatoriskOpg.Facade
 
 
 
-        public async Task<Guest> PostGuest(Guest NewGuest)
+        public async Task<Guest> PostGuest(Guest newGuest)
         {
             
             using (var client = new HttpClient())
@@ -88,12 +88,12 @@ namespace ObligatoriskOpg.Facade
 
                 try
                 {
-                    var response = await client.PostAsJsonAsync<Guest>("API/guest", NewGuest);
+                    var response = await client.PostAsJsonAsync<Guest>("API/guests", newGuest);
                     if (response.IsSuccessStatusCode)
                     {
                         //return MyNewGuest;
                         ErrorMessage = response.StatusCode.ToString();
-                        return NewGuest;
+                        return newGuest;
                     }
 
                     ErrorMessage = response.StatusCode.ToString();
@@ -109,7 +109,7 @@ namespace ObligatoriskOpg.Facade
         }
 
             //HTTP PUT
-        public async Task<Guest> GuestPut(Guest UdGuest)
+        public async Task<Guest> GuestPut(Guest udGuest)
         {
         
             using (var client = new HttpClient())
@@ -118,12 +118,12 @@ namespace ObligatoriskOpg.Facade
                 client.DefaultRequestHeaders.Clear();
                 try
                 {
-                    var response = await client.PutAsJsonAsync<Guest>("API/Guest/" + UdGuest.Guest_No, UdGuest);
+                    var response = await client.PutAsJsonAsync<Guest>("API/guests/" + udGuest.Guest_No, udGuest);
                     if (response.IsSuccessStatusCode)
                     {
 
                         ErrorMessage = response.StatusCode.ToString();
-                        return UdGuest;
+                        return udGuest;
                     }
                     ErrorMessage = response.StatusCode.ToString();
                     return null;
@@ -140,14 +140,14 @@ namespace ObligatoriskOpg.Facade
 
         // Http Delete
 
-        public async Task<Guest> GuestDelete(Guest DelGuest)
+        public async Task<Guest> GuestDelete(Guest delGuest)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
 
-                string urlString = "api/hotels/" + DelGuest.Guest_No;
+                string urlString = "api/guests/" + delGuest.Guest_No;
 
                 try
                 {

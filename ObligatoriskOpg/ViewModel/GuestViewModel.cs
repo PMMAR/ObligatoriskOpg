@@ -46,10 +46,10 @@ namespace ObligatoriskOpg.ViewModel
         {
             gs = GuestSingleton.Instance;
             //GetGuest = new RelayCommand();
-            AddGuestCommand = new RelayCommand(GuestHandler. );
-            GetGuestCommand = new RelayCommand(GuestHandler.);
-            UpdateGuestCommand = new RelayCommand(GuestHandler.);
-            DeleteGuestCommand = new RelayCommand(GuestHandler.);
+            //AddGuestCommand = new RelayCommand();
+            //GetGuestCommand = new RelayCommand();
+            //UpdateGuestCommand = new RelayCommand();
+            //DeleteGuestCommand = new RelayCommand();
         }
 
 
