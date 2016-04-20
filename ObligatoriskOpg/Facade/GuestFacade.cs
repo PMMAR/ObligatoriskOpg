@@ -17,7 +17,7 @@ namespace ObligatoriskOpg.Facade
         //HttpClientHandler handler = new HttpClientHandler();
         //handler.UseDefaultCredentials = true;
         public string ErrorMessage { get; set; }
-        public string responseMessage { get; set; }
+     
 
         //Http GET
         public async Task<List<GuestClass>> GetGuestList()
