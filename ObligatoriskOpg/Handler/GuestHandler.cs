@@ -18,7 +18,7 @@ namespace ObligatoriskOpg.Handler
         //public string Name { get; set; }
         //public int Guest_No { get; set; }
         //public string Address { get; set; }
-        public GuestClass guest  { get; set; }
+        public Guest guest  { get; set; }
 
         public GuestHandler(GuestViewModel guestViewModels)
         {

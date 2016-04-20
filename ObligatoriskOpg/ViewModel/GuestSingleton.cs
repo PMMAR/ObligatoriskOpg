@@ -11,13 +11,13 @@ namespace ObligatoriskOpg.ViewModel
 {
     class GuestSingleton
     {
-        public ObservableCollection<GuestClass> GuestClasses { get; set; }
+        public ObservableCollection<Guest> GuestClasses { get; set; }
         private static GuestSingleton instance = new GuestSingleton();
         public int SelectedIndex  { get; set; }
 
         public GuestSingleton()
         {
-            GuestClasses = new ObservableCollection<GuestClass>();
+            GuestClasses = new ObservableCollection<Guest>();
 
             }   
 
