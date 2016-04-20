@@ -19,6 +19,11 @@ namespace ObligatoriskOpg.Model
             Address = address;
         }
 
+        public Guest()
+        {
+
+        }
+
         public override string ToString()
         {
             return $"Name: {Name}, Guest_No: {Guest_No}, Address: {Address}";

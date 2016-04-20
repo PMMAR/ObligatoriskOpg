@@ -9,7 +9,7 @@ using ObligatoriskOpg.ViewModel;
 
 namespace ObligatoriskOpg.Handler
 {
-    class GuestHandler
+    public class GuestHandler
     {
         public static GuestViewModel GuestViewModels { get; set; }
         public static GuestSingleton GuestSingletons { get; set; }

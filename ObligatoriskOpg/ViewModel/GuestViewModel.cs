@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using ObligatoriskOpg.Annotations;
 using ObligatoriskOpg.Common;
@@ -13,7 +8,7 @@ using ObligatoriskOpg.Model;
 
 namespace ObligatoriskOpg.ViewModel
 {
-    class GuestViewModel : INotifyPropertyChanged
+    public class GuestViewModel : INotifyPropertyChanged
     {
         private int _guestId;
         private string _navn;
@@ -57,7 +52,10 @@ namespace ObligatoriskOpg.ViewModel
 
 
 
-        #region MyRegion
+        
+
+
+        #region Property Options
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ObligatoriskOpg.Model;
 
-namespace ObligatoriskOpg.ViewModel
+namespace ObligatoriskOpg.Model
 {
-    class GuestSingleton
+    public class GuestSingleton
     {
         public ObservableCollection<Guest> Guests { get; set; }
         private static GuestSingleton instance = new GuestSingleton();
@@ -29,9 +29,5 @@ namespace ObligatoriskOpg.ViewModel
             }
         }
 
-        public void AddGuest(string name, int Guest_No, string address)
-        {
-            Guests.Add(new Guest(name, Guest_No, address));
-        }
     }
 }
