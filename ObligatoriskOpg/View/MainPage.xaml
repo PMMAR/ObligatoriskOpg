@@ -12,5 +12,11 @@
         <ViewModel:GuestViewModel/>
     </Page.DataContext>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="77*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Margin="222,10,0,10" Width="177" ItemsSource="{Binding gs.Guests}" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="5" Background="#FFC3C3C3"/>
+    </Grid>
 </Page>
