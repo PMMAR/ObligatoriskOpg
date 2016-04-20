@@ -5,17 +5,21 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ObligatoriskOpg.Annotations;
+using ObligatoriskOpg.Common;
 
 namespace ObligatoriskOpg.ViewModel
 {
     class GuestViewModel : INotifyPropertyChanged
     {
+        public ICommand GetGuest { get; set; }  
         public event PropertyChangedEventHandler PropertyChanged;
         public GuestSingleton gs { get; set; }
         public GuestViewModel()
         {
             gs = GuestSingleton.Instance;
+            //GetGuest = new RelayCommand();
         }
 
         
