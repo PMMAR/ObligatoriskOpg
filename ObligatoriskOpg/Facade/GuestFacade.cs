@@ -113,41 +113,40 @@ namespace ObligatoriskOpg.Facade
             }
         }
 
-        //        //HTTP PUT
-        //        var MyUpdatedHotel = new Hotel()
-        //        {
-        //            Address = "PlzWorkstreet ",
-        //            Hotel_No = 1019,
-        //            Name = "Plz"
-        //        };
+            //HTTP PUT
+        public async Task<GuestClass> GuestPut(string Name, int Guest_No, string Address)
+        {
+            var MyUpdatedGuest = new GuestClass(Name, Guest_No, Address)
+            {
+                Address = Address,
+                Guest_No = Guest_No,
+                Name = Name
+            };
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                try
+                {
+                    var response = await client.PutAsJsonAsync<GuestClass>("API/Guest/Guest_No", MyUpdatedGuest);
+                    if (response.IsSuccessStatusCode)
+                    {
 
-        //        MyUpdatedHotel.Name = "EASJ Hotel";
+                        ErrorMessage = response.StatusCode.ToString();
+                        return MyUpdatedGuest;
+                    }
+                    ErrorMessage = response.StatusCode.ToString();
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    ErrorMessage = e.Message;
+                    return null;
+                }
+            }
+        }
 
-        //            using (var client = new HttpClient())
-        //            {
-        //                client.BaseAddress = new Uri(serverUrl);
-        //        client.DefaultRequestHeaders.Clear();
-        //                try
-        //                {
-        //                    var response = client.PutAsJsonAsync<Hotel>("API/Hotels/1019", MyUpdatedHotel).Result;
-        //                    if (response.IsSuccessStatusCode)
-        //                    {
-        //                        Console.WriteLine("Du har opdateret et hotel");
-        //                        Console.WriteLine("Statuskode : " + response.StatusCode);
-        //                    }
-        //                    else
-        //                    {
-        //                        Console.WriteLine("Fejl, hotellet blev ikke opdateret");
-        //                        Console.WriteLine("Statuskode : " + response.StatusCode);
-        //                    }
-        //                }
-        //                catch (Exception e)
-        //                {
-        //                    Console.WriteLine("Der er sket en fejl : " + e.Message);
-        //                }
-        //            }
 
-        //            Console.ReadKey();
 
         // Http Delete
 
