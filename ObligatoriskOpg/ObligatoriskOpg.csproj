@@ -100,7 +100,7 @@
     </Compile>
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Facade\GuestFacade.cs" />
-    <Compile Include="Handler\GuestHandler.cs" />
+    <Compile Include="Facade\Handler\GuestHandler.cs" />
     <Compile Include="Model\Guest.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

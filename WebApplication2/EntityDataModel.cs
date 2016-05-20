@@ -10,6 +10,7 @@ namespace WebApplication2
         public EntityDataModel()
             : base("name=EntityDataModel")
         {
+            base.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Booking> Booking { get; set; }
